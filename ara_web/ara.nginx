@@ -1,0 +1,13 @@
+server {
+    listen 80;
+
+    location / {
+            include uwsgi_params;
+            uwsgi_pass unix:/var/run/ara.socket;
+    }
+
+    # You may need this to prevent return 404 recursion.
+    location = /404.html {
+            internal;
+    }
+}
